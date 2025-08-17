@@ -12,10 +12,11 @@ The repository includes the Excel file used for the analysis.
 The dataset provided only contains the structure (column names, headers, and formatting) but no real values. This is done intentionally to protect sensitive medical information.
 
 📊 Analysis Overview
-Blood Metal Mixture – Total Population: Initial BKMR model analyzing heavy metal mixture exposure in the total study population.
 
-Bivariate Analysis: It also Demonstrates the interaction plot of the BKMR model. Explores how blood metal mixture exposures jointly influence disease risk at different quartiles.
+Code1: Blood Metal Mixture – Total Population: Initial BKMR model analyzing heavy metal mixture exposure in the total study population.
 
-Weighted Quantile Sum (WQS) Regression: An extension including age and BMI alongside heavy metals. It allows comparison of WQS with BKMR for mixture analysis.
+Code2: Bivariate Analysis: It also Demonstrates the interaction plot of the BKMR model. Explores how blood metal mixture exposures jointly influence disease risk at different quartiles.
+
+Code3: Weighted Quantile Sum (WQS) Regression: An extension including age and BMI alongside heavy metals. It allows comparison of WQS with BKMR for mixture analysis.
 
 
