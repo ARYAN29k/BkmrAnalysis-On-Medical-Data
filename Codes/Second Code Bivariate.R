@@ -23,6 +23,7 @@ set.seed(123)
 fit <- kmbayes(y = y, Z = Z, iter = 5000, verbose = FALSE, varsel = TRUE)
 
 # Step 7: Define exposure pairs for bivariate interaction analysis as there are 25 graoh with 20 graph which are distinct each two values represent a pair
+# For example 1,2 pair represent Copper(1) with Selenium(2)  and the next pair 1,3 reresent graph between copper(1) and Molybdenum(3)
 z.pairs <- matrix(
   c(1, 2, 1, 3, 1, 4, 1, 5,
     2, 1, 2, 3, 2, 4, 2, 5,
