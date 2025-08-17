@@ -1,26 +1,30 @@
+# Step1:
 library(readxl)
 library(bkmr)
 library(ggplot2)
 data<-read_excel("C:\\Users\\Hp\\Desktop\\EM.xlsx")
-#Step2:
+# Step2:
 # Extract outcome, exposures, and covariates
 y <- data$Preeclampsia
 Z <- as.matrix(data[, c("Copper","Selenium","Molybednum","Manganese","Cobalt")]) 
 X <- matrix(1, nrow = nrow(data), ncol = 1)  # Intercept only
-#Step3:
- # Remove rows with NA (if any remain)
+# Step3:
+# Remove rows with NA (if any remain)
  complete_cases <- complete.cases(Z, y, X)
 Z <- Z[complete_cases, ]
  y <- y[complete_cases]
  X <- X[complete_cases, ]
 Z <- scale(Z)
-#Step4:
+# Step4: 
+# Fit the bivariate bkmr using fit_bkmr function
 set.seed(123)
  fit_bkmr <- kmbayes(y = y, Z = Z, X = X, family = "binomial", 
                     iter = 5000, verbose = FALSE, varsel=TRUE)
-#Step5:
+# Step5:
+# Compute the univariate exposure–response functions for each predictor across a grid of values, while holding other predictors at their median.
 univar_response <- PredictorResponseUnivar(fit = fit_bkmr, ngrid = 50)
-#Step6:
+# Step6: 
+# Plotting function
 p_total <- ggplot(univar_response, aes(x = z, y = est, ymin = est - 1.96 * se, ymax = est + 1.96 * se)) +
   geom_smooth(stat = "identity", color = "blue", fill = "grey70") +
   facet_wrap(~variable, scales = "free_x", ncol = 5, strip.position = "top") +
